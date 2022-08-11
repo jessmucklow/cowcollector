@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Cow List</h1>
+
+{% for cow in cows %}
+  <div class="card">
+    <a href="{% url 'detail' cow.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ cow.name }}</span>
+        <p>Breed: {{ cow.breed }}</p>
+        <p>Description: {{ cow.description }}</p>
+        {% if cow.age > 0 %}
+          <p>Age: {{ cow.age }}</p>
+        {% else %}
+          <p>Age: Calf</p>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+{% endfor %}
+
+{% endblock %}
